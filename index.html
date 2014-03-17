@@ -9,13 +9,17 @@
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script> 
         <script type="text/javascript" src="js/jquery.popHover.js"></script>
+		<script type="text/javascript" src="js/jquery.shuffleString.js"></script>
      
     
 		<script type="text/javascript">
 			$(function() {
 				//alert('Do you love me?');
 				//$('.enlarge').turnGreen();
+				$('.shu').turnRed();
 				$('.enlarge').popHover({ size: 1.7, opa: 0.7 });
+				$('#big').popHover();
+				
 			});
 		</script>
  
@@ -23,7 +27,7 @@
 
 	<body>
         <div class="enlarge">Testing SiteDisks</div>
-		
-		<p>Something <a href="http://www.sitedisks.com.au" target="_blank"><span class="enlarge">Big</span></a> coming soon... </p>
+		<div class="shu">Shuffle String</div>
+		<p>Something <a href="http://www.sitedisks.com.au" target="_blank"><span id="big">Big</span></a> coming soon... </p>
 	</body>
 </html>

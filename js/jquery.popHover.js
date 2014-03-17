@@ -12,11 +12,10 @@
 
 	$.fn.popHover = function(options) {
 		options = $.extend({}, $.fn.config, options);
-		
 		return this.each(function() {
-			oSize = parseInt($(this).css("font-size"));
-			oColor = $(this).css("color");
 			$(this).mouseover(function() {
+				oSize = parseInt($(this).css("font-size"));
+				oColor = $(this).css("color");
 				$(this).stop().animate({
 					opacity: options.opa
 					, fontSize: oSize * options.size
