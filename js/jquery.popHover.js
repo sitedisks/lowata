@@ -2,7 +2,7 @@
 	// local global go here - referenced via closure
 	var oSize;
 	var oColor;
-	
+	var imgWidth;
 	$.fn.turnGreen =function(options){
 		options = $.extend({}, $.fn.config, options);
 		return this.each(function(){
@@ -16,22 +16,19 @@
 			$(this).mouseover(function() {
 				oSize = parseInt($(this).css("font-size"));
 				oColor = $(this).css("color");
-				$(this).stop().animate({
-					opacity: options.opa
-					, fontSize: oSize * options.size
-					, color: options.color
-				}, options.enlSpeed, function() {
-					$(this).animate({ 
-						opacity: 1
-					}, options.backSpeed);
-					
+				imgWidth = $(this).outerWidth();
+				var settings = {opacity:options.opa,fontSize:oSize*options.size,color:options.color};
+				if($(this).prop("tagName")=="IMG")
+					settings.width = imgWidth * options.size;
+				$(this).stop().animate(settings, options.enlSpeed, function() {
+					$(this).animate({opacity: 1}, options.backSpeed);
 				});
 			});
 			$(this).mouseout(function() {
-				$(this).stop().animate({
-					fontSize: oSize
-					, color: oColor
-				}, options.outSpeed);
+				var settings = {fontSize:oSize,color:oColor};
+				if($(this).prop("tagName")=="IMG")
+					settings.width = imgWidth;
+				$(this).stop().animate(settings, options.outSpeed);
 			});
 		});
 	};
